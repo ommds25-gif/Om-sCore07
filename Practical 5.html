@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Scholership / Seminar Registration Form</title>
+    </head>
+    <body>
+        <h2>>Scholership / Seminar Registration Form</h2>
+        <form>
+           <!--Personal Infromation-->
+           <fieldset>
+            <legend>
+                Personal Infromation
+            </legend>
+            <label>Full Name:</label>
+            <input type="text" name="fullname"><br><br>
+             <label>Email:</label>
+            <input type="email" name="email"><br><br>
+             <label>Phone Number:</label>
+            <input type="el" name="phone"><br><br>
+             <label>Gender:</label>
+            <input type="radio" name="gender" value="male">Male
+            <input type="radio" name="gender" value="female">Female
+            <input type="radio" name="gender" value="other">Other
+           </fieldset>
+           <br>
+
+           <!--Academic Infromation-->
+           <fieldset>
+             <legend>Academic Details</legend>
+             <label>Course:</label>
+             <select name="course">
+                <option value="">--Select Course-</option>
+                <option value="btech">B.Tech</option>
+                <option value="bsc">B.Sc</option>
+                <option value="bca">BCA</option>
+                <option value="mca">MCA</option>
+                <option value="msc">M.Sc</option>
+             </select>
+             <br><br>
+
+             <label>Year of Study:</label>
+             <select name="year">
+                <option>1st Year</option>
+                 <option>2nd Year</option>
+                <option>3rd Year</option>
+                <option>4th Year</option>
+             </select>
+           </fieldset>
+
+                      <!--Seminar Preferences-->
+                      <fieldset>
+                        <legend>Seminar Topics Interested In</legend>
+
+                        <input type="checkbox" name="topic" value="ai">Artificial Intelligence<br>
+                         <input type="checkbox" name="topic" value="web">Web Development<br>
+                        <input type="checkbox" name="topic" value="cyber">Cyber Security<br>
+                        <input type="checkbox" name="topic" value="data">Data Science
+                      </fieldset>
+                      <br>
+                      <input type="submit" value="Register">
+                      <input type="reset" value="Clear">
+
+        </form>
+    </body>
+</html>
