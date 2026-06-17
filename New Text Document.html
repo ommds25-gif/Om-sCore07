@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerConnect | Job Search Portal</title>
+    <!-- Google Fonts for Modern Typography -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+<style>/* --- GLOBAL STYLES & RESET --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --primary-color: #4f46e5;
+    --primary-hover: #4338ca;
+    --bg-light: #f8fafc;
+    --text-dark: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* --- NAVIGATION BAR --- */
+.navbar {
+    background: #ffffff;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--primary-color);
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+/* --- BUTTONS --- */
+.btn {
+    padding: 0.6rem 1.3rem;
+    border-radius: 6px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: #f5f3ff;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    background: linear-gradient(135deg, #e0e7ff 0%, #eef2ff 100%);
+    padding: 5rem 2rem;
+    text-align: center;
+}
+
+.hero-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.hero h1 span {
+    color: var(--primary-color);
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+}
+
+/* --- SEARCH BAR FILTER --- */
+.search-box {
+    background: #ffffff;
+    padding: 0.75rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    gap: 0.5rem;
+}
+
+.input-field {
+    flex: 1;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    outline: none;
+    font-size: 0.95rem;
+}
+
+.search-box button {
+    padding: 0 2rem;
+    border-radius: 8px;
+}
+
+/* --- JOBS LISTINGS --- */
+.jobs-section {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.section-title p {
+    color: var(--text-muted);
+}
+
+.jobs-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+}
+
+.job-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.job-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.company-badge {
+    width: 48px;
+    height: 48px;
+    background: #eaedf7;
+    color: #4285F4;
+    font-size: 1.4rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.company-badge.accent-purple { color: #a855f7; background: #f3e8ff; }
+.company-badge.accent-orange { color: #f97316; background: #ffedd5; }
+
+.job-header h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.company-name {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.job-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tag {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-weight: 500;
+}
+
+.tag-full { background: #dcfce7; color: #166534; }
+.tag-part { background: #fef9c3; color: #854d0e; }
+.tag-loc { background: #f1f5f9; color: #475569; }
+
+.job-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.job-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1rem;
+}
+
+.salary {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.btn-apply {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.btn-apply:hover {
+    color: var(--primary-hover);
+}
+
+/* --- FOOTER --- */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    background: #ffffff;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 4rem;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+    .nav-links, .nav-buttons {
+        display: none; /* Can be paired with a JS toggle menu later */
+    }
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .search-box {
+        flex-direction: column;
+    }
+    .search-box button {
+        padding: 0.8rem;
+    }
+}
+</style>
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Career<span>Connect</span></a>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Find Jobs</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Companies</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <a href="#" class="btn btn-secondary">Login</a>
+                <a href="#" class="btn btn-primary">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO & SEARCH FILTER SECTION -->
+    <header class="hero">
+        <div class="hero-container">
+            <h1>Find Your <span>Dream Job</span> Today</h1>
+            <p>Connecting top talent with leading global companies. Simple, fast, and successful.</p>
+            
+            <!-- Search Form Filters -->
+            <form class="search-box">
+                <div class="input-field">
+                    <input type="text" placeholder="Job title, keywords, or company...">
+                </div>
+                <div class="input-field">
+                    <input type="text" placeholder="Location (e.g. Remote, Mumbai)...">
+                </div>
+                <button type="submit" class="btn btn-primary">Search Jobs</button>
+            </form>
+        </div>
+    </header>
+
+    <!-- JOB LISTINGS SECTION -->
+    <section class="jobs-section">
+        <div class="section-title">
+            <h2>Latest Job Openings</h2>
+            <p>Explore recent opportunities posted by verified employers.</p>
+        </div>
+
+        <div class="jobs-container">
+            
+            <!-- Job Card 1 -->
+            <div class="job-card">
+                <div class="job-header">
+                    <div class="company-badge">G</div>
+                    <div>
+                        <h3>Senior Frontend Developer</h3>
+                        <p class="company-name">Google Inc.</p>
+                    </div>
+                </div>
+                <div class="job-tags">
+                    <span class="tag tag-full">Full-Time</span>
+                    <span class="tag tag-loc">Remote</span>
+                </div>
+                <p class="job-desc">Looking for a passionate frontend expert skilled in React, CSS Grid, and modern web optimization paradigms.</p>
+                <div class="job-footer">
+                    <span class="salary">8-10 LPA</span>
+                    <a href="#" class="btn-apply">Apply Now</a>
+                </div>
+            </div>
+
+            <!-- Job Card 2 -->
+            <div class="job-card">
+                <div class="job-header">
+                    <div class="company-badge accent-purple">M</div>
+                    <div>
+                        <h3>UI/UX Product Designer</h3>
+                        <p class="company-name">Meta Platforms</p>
+                    </div>
+                </div>
+                <div class="job-tags">
+                    <span class="tag tag-full">Full-Time</span>
+                    <span class="tag tag-loc">On-Site</span>
+                </div>
+                <p class="job-desc">Design scalable user experiences for complex systems. Proficiency in Figma and responsive system architecture required.</p>
+                <div class="job-footer">
+                    <span class="salary">15-20 LPA</span>
+                    <a href="#" class="btn-apply">Apply Now</a>
+                </div>
+            </div>
+
+            <!-- Job Card 3 -->
+            <div class="job-card">
+                <div class="job-header">
+                    <div class="company-badge accent-orange">A</div>
+                    <div>
+                        <h3>Backend Engineer (Python)</h3>
+                        <p class="company-name">Amazon Web Services</p>
+                    </div>
+                </div>
+                <div class="job-tags">
+                    <span class="tag tag-part">Contract</span>
+                    <span class="tag tag-loc">Hybrid</span>
+                </div>
+                <p class="job-desc">Build resilient database structures and REST APIs using FastAPI, PostgreSQL, and cloud service technologies.</p>
+                <div class="job-footer">
+                    <span class="salary">10-15 LPA </span>
+                    <a href="#" class="btn-apply">Apply Now</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>&copy; 2026 CareerConnect Portal. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
