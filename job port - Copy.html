@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerHub - Job Search Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>/* Base Resets & Variables */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --bg-light: #f8fafc;
+    --white: #ffffff;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Header Section */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 8%;
+    background-color: var(--white);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo a {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.logo span {
+    color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    font-weight: 500;
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--primary-color);
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.btn-login {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.btn-register {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+.btn-register:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    padding: 5rem 8%;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content h1 span {
+    color: var(--primary-color);
+}
+
+.hero-content p {
+    color: var(--text-light);
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+}
+
+/* Search Filters Form */
+.search-container {
+    display: flex;
+    background: var(--white);
+    padding: 0.75rem;
+    border-radius: 50px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    max-width: 900px;
+    margin: 0 auto;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    padding: 0 1rem;
+    border-right: 1px solid #e2e8f0;
+}
+
+.search-box:last-of-type {
+    border-right: none;
+}
+
+.search-box i {
+    color: var(--primary-color);
+    margin-right: 0.75rem;
+}
+
+.search-box input, .search-box select {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.btn-search {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-search:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Job Listings Grid */
+.listings-section {
+    padding: 5rem 8%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.listings-section h2 {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 3rem;
+}
+
+.jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.job-card {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    border: 1px solid #f1f5f9;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.company-logo {
+    width: 45px;
+    height: 45px;
+    background-color: #eff6ff;
+    color: var(--primary-color);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.job-type {
+    padding: 0.3rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.full-time { background: #dcfce7; color: #15803d; }
+.part-time { background: #fef9c3; color: #a16207; }
+.remote { background: #e0f2fe; color: #0369a1; }
+
+.job-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.company-name {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+}
+
+.job-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: #475569;
+}
+
+.job-details i {
+    margin-right: 0.5rem;
+    color: var(--text-light);
+}
+
+.btn-apply {
+    width: 100%;
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 0.65rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-apply:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Footer Section */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: #0f172a;
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin-top: 4rem;
+}
+
+/* Responsive Scaling Overrides */
+@media (max-width: 768px) {
+    .navbar { padding: 1rem 4%; }
+    .nav-links, .nav-buttons { display: none; } /* Simplified fallback for mobile view */
+    .hero { padding: 3rem 4%; }
+    .hero-content h1 { font-size: 2.2rem; }
+    .search-container { flex-direction: column; border-radius: 15px; padding: 1rem; }
+    .search-box { border-right: none; border-bottom: 1px solid #e2e8f0; padding: 0.75rem 0; width: 100%; }
+    .btn-search { width: 100%; margin-top: 0.5rem; border-radius: 8px; }
+}
+</style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="navbar">
+        <div class="logo"><a href="#">Career<span>Hub</span></a></div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">Find Jobs</a></li>
+                <li><a href="#">Companies</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+        <div class="nav-buttons">
+            <a href="#" class="btn-login">Login</a>
+            <a href="#" class="btn-register">Register</a>
+        </div>
+    </header>
+
+    <!-- Hero Section with Search Filters -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Find Your <span>Dream Job</span> Today</h1>
+            <p>Connecting the best talent with top industries worldwide.</p>
+            
+            <!-- Filter Form -->
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Job title or keywords...">
+                </div>
+                <div class="search-box">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <input type="text" placeholder="City or remote...">
+                </div>
+                <div class="search-box">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <select>
+                        <option value="">All Categories</option>
+                        <option value="tech">Technology</option>
+                        <option value="design">Design</option>
+                        <option value="marketing">Marketing</option>
+                    </select>
+                </div>
+                <button class="btn-search">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Listings Section -->
+    <main class="listings-section">
+        <h2>Latest Job Openings</h2>
+        <p class="section-subtitle">Discover your next career move from our updated daily listings.</p>
+
+        <div class="jobs-grid">
+            <!-- Job Card 1 -->
+            <div class="job-card">
+                <div class="card-header">
+                    <div class="company-logo"><i class="fa-solid fa-code"></i></div>
+                    <span class="job-type full-time">Full Time</span>
+                </div>
+                <h3 class="job-title">Frontend Developer</h3>
+                <p class="company-name">TechNova Solutions</p>
+                <div class="job-details">
+                    <span><i class="fa-solid fa-location-dot"></i> New Delhi, India</span>
+                    <span><i class="fa-solid fa-wallet"></i> ₹8,00000 - ₹12,00000 /yr</span>
+                </div>
+                <button class="btn-apply">Apply Now</button>
+            </div>
+
+            <!-- Job Card 2 -->
+            <div class="job-card">
+                <div class="card-header">
+                    <div class="company-logo"><i class="fa-solid fa-palette"></i></div>
+                    <span class="job-type part-time">Part Time</span>
+                </div>
+                <h3 class="job-title">UI/UX Designer</h3>
+                <p class="company-name">PixelCraft Studio</p>
+                <div class="job-details">
+                    <span><i class="fa-solid fa-location-dot"></i> Remote</span>
+                    <span><i class="fa-solid fa-wallet"></i> ₹5,00000 - ₹7,00000 /yr</span>
+                </div>
+                <button class="btn-apply">Apply Now</button>
+            </div>
+
+            <!-- Job Card 3 -->
+            <div class="job-card">
+                <div class="card-header">
+                    <div class="company-logo"><i class="fa-solid fa-chart-line"></i></div>
+                    <span class="job-type remote">Remote</span>
+                </div>
+                <h3 class="job-title">Digital Marketing Specialist</h3>
+                <p class="company-name">VibeMedia Agency</p>
+                <div class="job-details">
+                    <span><i class="fa-solid fa-location-dot"></i> Mumbai, India</span>
+                    <span><i class="fa-solid fa-wallet"></i> ₹6,00000 - ₹9,00000 /yr</span>
+                </div>
+                <button class="btn-apply">Apply Now</button>
+            </div>
+
+            <!-- Job Card 4 -->
+            <div class="job-card">
+                <div class="card-header">
+                    <div class="company-logo"><i class="fa-solid fa-database"></i></div>
+                    <span class="job-type full-time">Full Time</span>
+                </div>
+                <h3 class="job-title">Backend Engineer (Python)</h3>
+                <p class="company-name">CloudScale Inc.</p>
+                <div class="job-details">
+                    <span><i class="fa-solid fa-location-dot"></i> Bangalore, India</span>
+                    <span><i class="fa-solid fa-wallet"></i> ₹12,00000 - ₹18,00000 /yr</span>
+                </div>
+                <button class="btn-apply">Apply Now</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 CareerHub Portal. Designed for modern web applications.</p>
+    </footer>
+
+</body>
+</html>
